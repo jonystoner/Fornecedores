@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Home</title>
+    <title>pagina iniciak</title>
 </head>
 
 <body style="background-color: black">
     <?php
     include 'menu.php';
   ?>
-    <div class="container-fluid ">
+    <div class="container-fluid">
+          <div class="container-fluid ">
         <div class="mt-5">
             <div class="row ">
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
@@ -34,6 +35,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 

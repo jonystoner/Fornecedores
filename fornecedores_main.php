@@ -6,32 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Fornecedores</title>
+      <title>Fornecedores</title>
 </head>
+<script>
+function confirmarExclussao(id) {
+    $('#modalExcluir').modal('show');
+    document.getElementById('btnConfirmarExclusao').onclick = function() {
+        window.location.href = "excluir_fornecedores.php?id_fornecedor=" + id;
+    };
+}
+</script>
 
 <body style="background-color: black">
     <?php
-        include "conexao.php"      
+        include "conexao.php";
+        include "menu.php";    
     ?>
-    <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/cursosenac/sistema_de_fornecedores/home.php">Home</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page"
-                        href="/cursosenac/sistema_de_fornecedores/incluir_fornecedor.php">Incluir Fornecedor</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/cursosenac/sistema_de_fornecedores/pagamentos.php">
-                        Pagamentos Realizados</a>
-                </li>
-            </ul>
+           <div class="container-fluid mt-2">
+            <div class="d-flex justify-content-end">
+                <a href="incluir_fornecedor.php" class="btn btn-primary">
+                    Incluir Fornecedor
+                </a>
         </div>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
-    </nav>
     <div class="container-fluid mt-2">
         <table class="table active gap-1">
             <thead>
@@ -61,10 +57,12 @@
                         <?php echo(htmlspecialchars($nome_fornecedor))?>
                     </th>
                     <td>
-                        <button type="button" class="btn btn-primary">Editar</button>
+                        <a style="width: 78px;" class="nav-link active btn btn-success" aria-current="page"
+                            href="editar_fornecedores.php?id_fornecedor=<?php echo(htmlspecialchars($id_fornecedor));?>">Editar</a>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-danger">Excluir</button>
+                        <a style="width: 78px;" class="nav-link active btn btn-danger" aria-current="page" href="#"
+                            onclick="confirmarExclussao(<?php echo htmlspecialchars($id_fornecedor);?>)">excluir</a>
                     </td>
 
                 </tr>
@@ -73,6 +71,27 @@
                 ?>
             </tbody>
         </table>
-    </div>
+        <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalExcluirLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalExcluirLabel">Confirmar Exclusão</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que deseja excluir este item?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="btnConfirmarExclusao">Excluir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </body>
+
 </html>

@@ -31,7 +31,7 @@
         $stmt->bindParam( ':contato', $contato);
 
         if($stmt-> execute()){
-            echo(header("Location:home.php"));            
+            echo(header("Location:fornecedores_main.php"));            
         }
         else{
             echo("Erro ao inserir o registro no banco de dados");

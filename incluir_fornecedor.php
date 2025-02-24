@@ -13,93 +13,103 @@
 </head>
 
 <body style="background-color: black">
+    <!-- Menu -->
+    <?php include 'menu.php'; ?>
 
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <a class="navbar-brand" href="/cursosenac/sistema_de_fornecedores/home.php">Home</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page"
-                        href="/cursosenac/sistema_de_fornecedores/fornecedores_main.php">Fornecedores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/cursosenac/sistema_de_fornecedores/pagamentos.php">
-                        Pagamentos Realizados</a>
-                </li>
-            </ul>
-        </div>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+    <!-- Formulário de inclusão de fornecedores -->
+    <div class="container mt-5">
+        <form action="salvar.php" method="POST">
+            <!-- Nome e CPF/CNPJ -->
+            <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                    <label for="nome_fornecedor">Nome Fornecedor</label>
+                    <input type="text" class="form-control" id="nome_fornecedor" name="nome_fornecedor"
+                        placeholder="Nome Fornecedor" required>
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="cpfcnpj">CPF/CNPJ</label>
+                    <input type="text" id="cpf_cnpj" name="cpf_cnpj" class="form-control cpfOuCnpj"
+                        placeholder="Entre com o CPF/CNPJ" required>
+                </div>
+            </div>
+
+            <!-- Celular e Email -->
+            <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                    <label for="celular">Celular</label>
+                    <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular">
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                </div>
+            </div>
+
+            <!-- CEP e Logradouro -->
+            <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                    <label for="cep">CEP</label>
+                    <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP">
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Logradouro">
+                </div>
+            </div>
+
+            <!-- Número e Complemento -->
+            <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                    <label for="numero">Número</label>
+                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Número">
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" class="form-control" id="complemento" name="complemento"
+                        placeholder="Complemento">
+                </div>
+            </div>
+
+            <!-- Bairro e Cidade -->
+            <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
+                </div>
+            </div>
+
+            <!-- Estado e Contato -->
+            <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                    <label for="estado">Estado</label>
+                    <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado">
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="contato">Contato</label>
+                    <input type="text" class="form-control" id="contato" name="contato" placeholder="Contato">
+                </div>
+            </div>
+
+            <!-- Botão de Salvar -->
+            <div class="form-row">
+                <div class="form-group col-12 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                </div>
+            </div>
         </form>
-    </nav>
-    <form class="container-fluid mt-5" action="salvar_fornecedor.php" method="POST">
-        <div class="form-row">
-            <div class="form-group col-12 col-md-6 col-lg-4 text-white">
-                <label for="nome_fornecedor">Nome Fornecedor</label>
-                <input type="text" class="form-control" id="nome_fornecedor" name="nome_fornecedor"
-                    placeholder="Nome Fornecedor" required>
-            </div>
-            <div class="form-group col-12 col-md-6 col-lg-4 text-white">
-                <label for="cpf_cnpj">CPF ou CNPJ</label>
-                <input type="text" class="form-control cpfOuCnpj" id="cpf_cnpj" name="cpf_cnpj" placeholder="cpf_cnpj"
-                    required>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-12 col-md-6 col-lg-4 t text-white ">
-                <label for="celular">Celular</label>
-                <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular">
-            </div>
-            <div class="form-group col-md-4 col-12 col-md-6 col-lg-4 text-white">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-12 col-md-6 col-lg-4 text-white">
-                <label for="cep">Cep</label>
-                <input type="text" class="form-control" id="cep" name="cep" placeholder="cep">
-            </div>
-            <div class="form-group col-md-4 col-12 col-md-6 col-lg-4 text-white">
-                <label for="logradouro">logradouro</label>
-                <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="logradouro	">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-12 col-md-6 col-lg-4 text-white">
-                <label for="numero">numero</label>
-                <input type="text" class="form-control" id="numero" name="numero" placeholder="numero">
-            </div>
-            <div class="form-group col-md-4 col-12 col-md-6 col-lg-4 text-white">
-                <label for="complemento">coplemento</label>
-                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="complemento">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-12 col-md-6 col-lg-4 text-white">
-                <label for="bairro">bairro</label>
-                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="bairro">
-            </div>
-            <div class="form-group col-md-4 col-12 col-md-6 col-lg-4 text-white">
-                <label for="cidade">cidade</label>
-                <input type="text" class="form-control" id="cidade" name="cidade" placeholder="cidade">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-12 col-md-6 col-lg-4 text-white">
-                <label for="estado">estado</label>
-                <input type="text" class="form-control" id="estado" name="estado" placeholder="estado">
-            </div>
-            <div class="form-group col-md-4 col-12 col-md-6 col-lg-4 text-white">
-                <label for="contato">contato</label>
-                <input type="text" class="form-control" id="contato" name="contato" placeholder="contato">
-            </div>
-        </div>
-        <div class=" container d-flex justify-content-end">
-            <button type="submit" class="btn btn-success">Salvar</button>
-        </div>
-    </form>
+    </div>
+
+    <!-- Carregando bibliotecas corretamente -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js">
+    <!-- Script para máscaras de CPF/CNPJ 
+    -->
+    </script>
+
 
     <script type="text/javascript">
     var options = {
@@ -112,6 +122,7 @@
     $('.cpfOuCnpj').length > 11 ? $('.cpfOuCnpj').mask('00.000.000/0000-00', options) : $('.cpfOuCnpj').mask(
         '000.000.000-00#', options);
     </script>
+
 </body>
 
 </html>
